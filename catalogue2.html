@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>All Movies Catalogue</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+
+		h2 {
+			margin-top: 20px;
+		}
+
+		.movie-list {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 20px auto;
+			max-width: 1200px;
+			justify-content: space-between;
+		}
+
+		.movie {
+			width: calc(33.33% - 20px);
+			margin-bottom: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			transition: transform 0.3s ease;
+			cursor: pointer;
+		}
+
+		.movie:hover {
+			transform: translateY(-10px);
+		}
+
+		.movie img {
+			width: 100%;
+			border-radius: 5px 5px 0 0;
+		}
+
+		.movie h3 {
+			margin: 10px;
+			font-size: 18px;
+			font-weight: normal;
+		}
+
+		.movie p {
+			margin: 10px;
+			font-size: 14px;
+			line-height: 1.5;
+			text-align: justify;
+			height: 75px;
+			overflow: hidden;
+		}
+
+		.movie button {
+			display: block;
+			margin: 10px auto;
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.movie button:hover {
+			background-color: #45a049;
+		}
+
+		input[type="nextPage"],
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+			transition: background-color 0.3s ease;
+		}
+
+		input[type="nextPage"]:hover {
+			background-color: #45a049;
+		}
+
+		.toolbar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 10px;
+			background-color: #eee;
+		}
+
+		.toolbar .logo {
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.search {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		.search input[type="text"] {
+			width: 200px;
+			padding: 10px;
+			border: none;
+			border-radius: 4px;
+			margin-right: 10px;
+		}
+
+		.search button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.search button:hover {
+			background-color: #45a049;
+		}
+
+		.toolbar button.logout {
+			background-color: red;
+			color: white;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 4px;
+			cursor: pointer;
+			margin-right: 20px;
+			width: 100px;
+			transition: background-color 0.3s ease;
+		}
+
+		.toolbar button.logout:hover {
+			background-color: darkred;
+		}
+
+		@media screen and (max-width: 1200px) {
+			.movie {
+				width: calc(50% - 20px);
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			.movie {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="toolbar">
+		<button class="logout" onclick="location.href='Login.html';">Logout</button>
+		<div class="logo">Movie Booker</div>
+		<div class="search">
+			<input type="text" id="searchInput" placeholder="Search...">
+			<button onclick="search()">Search</button>
+		</div>
+	</div>
+
+
+	<h1>Current and Upcoming</h1>
+
+	<div class="movie-list">
+		<div class="movie">
+			<img src="https://w0.peakpx.com/wallpaper/34/966/HD-wallpaper-the-avengers-avengers-endgame-avengers-avengers-endgame.jpg"
+				alt="Avengers: Endgame">
+			<h3>Avengers: Endgame</h3>
+			<p>After the devastating events of Avengers: Infinity War, the universe is in ruins.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=1'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+		</div>
+		<div class="movie">
+			<img src="https://i.ebayimg.com/images/g/2Y4AAOSwzwBgsOj0/s-l1600.jpg" alt="Jurassic World">
+			<h3>Jurassic World</h3>
+			<p>A new theme park, built on the original site of Jurassic Park, creates a genetically modified hybrid
+				dinosaur.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=2'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+		</div>
+		<div class="movie">
+			<img src="https://m.media-amazon.com/images/I/5103Iag9c9L._AC_.jpg" alt="Inception">
+			<h3>Inception</h3>
+			<p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse
+				task of planting an idea into the mind of a C.E.O.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=3'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+
+		</div>
+		<div class="movie">
+			<img src="https://allears.net/wp-content/uploads/2019/02/the-lion-king-poster-002-768x522.jpg"
+				alt="The Lion King">
+			<h3>The Lion King</h3>
+			<p>After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of
+				responsibility and bravery.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=4'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+
+		</div>
+		<div class="movie">
+			<img src="https://m.media-amazon.com/images/I/81ugxFdBZBL._SY445_.jpg" alt="Wonder Woman">
+			<h3>Wonder Woman</h3>
+			<p>When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training,
+				leaves home to fight a war, discovering her full powers and true destiny.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=5'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+		</div>
+		<div class="movie">
+			<img src="https://m.media-amazon.com/images/I/71PfZFFz9yL._AC_SY879_.jpg" alt="The Matrix">
+			<h3>The Matrix</h3>
+			<p>A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the
+				war against its controllers.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=6'">See
+				Details</button>
+			<form method="post" action="http://localhost/Project/SEProjectPhase2/book_tickets.php">
+				<button type="submit" name="submit">Book Tickets</button>
+				<label for="time">Select time:</label>
+				<select id="time" name="time">
+					<option value="12:00 PM">12:00 PM</option>
+					<option value="3:00 PM">3:00 PM</option>
+					<option value="6:00 PM">6:00 PM</option>
+					<option value="9:00 PM">9:00 PM</option>
+				</select>
+				<br>
+				<label for="theater">Select theater:</label>
+				<select id="theater" name="theater">
+					<option value="Theater 1">Theater 1</option>
+					<option value="Theater 2">Theater 2</option>
+					<option value="Theater 3">Theater 3</option>
+				</select>
+				<br>
+				<label for="seats">Number of seats:</label>
+				<input type="number" id="seats" name="seats" min="1" max="10">
+				<br>
+				<label for="tickets">Number of tickets:</label>
+				<input type="number" id="tickets" name="tickets" min="1" max="10">
+				<br>
+
+			</form>
+		</div>
+		<div class="movie">
+			<img src="https://i5.walmartimages.com/asr/3bd767b1-83f4-4de2-917e-462d4a65af19.f3270e899e73d002cad03b76adb226a0.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
+				alt="The Batman">
+			<h3>The Batman</h3>
+			<p>The Riddler is terrorizing Gotham City with his gruesome puzzles and only Batman can stop him.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=7'">See
+				Details</button>
+		</div>
+		<div class="movie">
+			<img src="https://lumiere-a.akamaihd.net/v1/images/avatar-twow-videobg01_cdd3dcb8.jpeg"
+				alt="Avatar: The Way of Water">
+			<h3>Avatar: The Way of Water</h3>
+			<p>The sequel to Avatar. A sequel to the 2009 film.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=8'">See
+				Details</button>
+		</div>
+		<div class="movie">
+			<img src="https://lumiere-a.akamaihd.net/v1/images/bp_zoom_05_2_e70a8044.jpeg"
+				alt="Black Panther: Wakanda Forever">
+			<h3>Black Panther: Wakanda Forever</h3>
+			<p>The sequel to Black Panther. The plot is yet to be revealed.</p>
+			<button
+				onclick="window.location.href = 'http://localhost/Project/SEProjectPhase2/movie_details.php?id=9'">See
+				Details</button>
+		</div>
+	</div>
+	<button type="nextPage" onclick="location.href='catalogue.html';">Back To Showings</button>
+
+	<script>
+		const searchBtn = document.getElementById('searchBtn');
+		searchBtn.addEventListener('click', search);
+
+		function search() {
+			const input = document.getElementById('searchInput').value;
+			const movies = document.getElementsByClassName('movie');
+			for (let i = 0; i < movies.length; i++) {
+				const title = movies[i].getElementsByTagName('h3')[0].textContent;
+				if (title.toLowerCase().includes(input.toLowerCase())) {
+					movies[i].style.display = 'block';
+				} else {
+					movies[i].style.display = 'none';
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

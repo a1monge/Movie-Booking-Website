@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<meta charset="UTF-8">
+	<title>Movie Booker</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			background-image: url("https://th.bing.com/th/id/OIP.KaxBOQCrX00PgdCoS4CSEgHaHa?w=183&h=183&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: rgb(179, 4, 4);
+		}
+
+		form {
+			width: 400px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="email"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"],
+		button {
+			background-color: #4CAF50;
+			color: #ffffff;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+			transition: background-color 0.3s ease;
+		}
+
+		input[type="submit"]:hover,
+		button:hover {
+			background-color: #45a049;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		span.forgot-password {
+			display: block;
+			text-align: right;
+			margin-top: 10px;
+		}
+
+		span.forgot-password a {
+			color: #666;
+			text-decoration: none;
+			font-size: 14px;
+			transition: color 0.3s ease;
+		}
+
+		span.forgot-password a:hover {
+			color: #333;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		@media screen and (max-width: 600px) {
+			form {
+				width: 80%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Movie Booker</h1>
+	<form id="login-form">
+		<h2>Login</h2>
+		<label for="login-email">Email:</label>
+		<input type="email" id="login-email" name="email" required>
+
+		<label for="login-password">Password:</label>
+		<input type="password" id="login-password" name="password" required>
+
+		<input type="submit" value="Login" onclick="login();">
+
+		<button id="signup-button">Signup</button>
+		<span class="forgot-password"><a href="#">Forgot password?</a></span>
+
+	</form>
+
+	<form id="signup-form" class="hidden">
+		<h2>Signup</h2>
+		<label for="signup-name">Name:</label>
+		<input type="text" id="signup-name" name="name" required>
+
+		<label for="signup-email">Email:</label>
+		<input type="email" id="signup-email" name="email" required>
+
+		<label for="signup-password">Password:</label>
+		<input type="password" id="signup-password" name="password" required>
+
+		<input type="submit" value="Signup" onclick="signup();">
+		<button id="back-to-login-button">Back to Login</button>
+	</form>
+	<script>
+		const loginForm = document.getElementById("login-form");
+		const signupForm = document.getElementById("signup-form");
+
+		loginForm.addEventListener('submit', function (event) {
+			event.preventDefault();
+			// your login code here
+		});
+
+		signupForm.addEventListener('submit', function (event) {
+			event.preventDefault();
+			// your signup code here
+		});
+		const signupButton = document.getElementById("signup-button");
+		const backToLoginButton = document.getElementById("back-to-login-button");
+
+		signupButton.addEventListener("click", () => {
+			loginForm.classList.add("hidden");
+			signupForm.classList.remove("hidden");
+		});
+
+		backToLoginButton.addEventListener("click", () => {
+			signupForm.classList.add("hidden");
+			loginForm.classList.remove("hidden");
+		});
+	</script>
+	<script src="credentials.js"></script>
+	<script src="signup.js"></script>
+</body>
+
+</html>

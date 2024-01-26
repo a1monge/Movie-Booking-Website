@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Admin Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f6f2f2;
+			margin: 0;
+			padding: 0;
+		}
+
+		.toolbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			height: 50px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 999;
+		}
+
+		.toolbar .logo {
+			font-size: 24px;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			flex: 1;
+		}
+
+		.toolbar .search {
+			display: flex;
+			align-items: center;
+			margin-right: 20px;
+		}
+
+		.toolbar .search input[type="text"] {
+			padding: 8px;
+			border: none;
+			border-radius: 4px;
+			margin-right: 10px;
+			width: 200px;
+			font-size: 14px;
+		}
+
+		.toolbar .search button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 8px 16px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.toolbar .search button:hover {
+			background-color: #45a049;
+		}
+
+		.options {
+			margin-top: 100px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.options h2 {
+			margin-top: 0;
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+		.options button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			margin-bottom: 20px;
+			font-size: 16px;
+		}
+
+		.options button:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="toolbar">
+		<div class="logo">Admin Panel</div>
+		<div class="search">
+			<input type="text" id="searchInput" placeholder="Search...">
+			<button>Search</button>
+		</div>
+		<button class="logout">Logout</button>
+	</div>
+
+	<div class="options">
+		<h2>Admin Options</h2>
+		<button id="userDatabaseButton">Access User Database</button>
+		<button id="movieDatabaseButton">Access Movie Database</button>
+	</div>
+
+	<script>
+		const userDatabaseButton = document.getElementById("userDatabaseButton");
+		const movieDatabaseButton = document.getElementById("movieDatabaseButton");
+
+		userDatabaseButton.addEventListener("click", () => {
+			// Redirect to user database page
+			window.location.href = "user-database.html";
+		})
+	</script>
+
+	<div class="admin-options">
+		<h2>Admin Options</h2>
+		<ul>
+			<li><a href="#">Manage Users</a></li>
+			<li><a href="#">Manage Movies</a></li>
+			<li><a href="http://localhost/Project/SEProjectPhase2/reports.php">Reports</a></li>
+		</ul>
+	</div>
+
+	<div class="user-database">
+		<h2>User Database</h2>
+		<!-- code for user database goes here -->
+	</div>
+
+	<div class="movie-database">
+		<h2>Movie Database</h2>
+		<!-- code for movie database goes here -->
+	</div>
+
+	<script>
+                // JavaScript code goes here
+	</script>
+</body>
