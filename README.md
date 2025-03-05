@@ -1,6 +1,5 @@
 # Movie Booking Website
 
-![Movie Booking Website Screenshot](screenshot.png) <!-- Add a screenshot if available -->
 
 ## Overview
 The **Movie Booking Website** is a full-stack web application that allows users to browse movies, view showtimes, and book tickets online. This project demonstrates my ability to develop a functional, user-friendly web application using **PHP** for the backend, **MySQL** for the database, and **HTML/CSS/JavaScript** for the frontend.
